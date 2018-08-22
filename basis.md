@@ -64,7 +64,7 @@ e | math.e 自然常数
 ** random 需要引入 ``` import random ```
 ### String 字符串
     * 用单引号(')或者双引号(")包起来的序列
-    * 字符串的截取
+    * 字符串的截取 获得一个新的序列
     ```python
     str[start:end]
     ```
@@ -79,9 +79,51 @@ e | math.e 自然常数
       print(str + 2) # 我是字符串2
       str[0] = 'wo' # error  不能修改
     ```
+    * 内置对象
+
+函数 | 描述
+- | :-:
+len | 字符串的长度
+capitalize | 第一个字符变成大写
+center | str.center(40,'*') 将 `str`左右填充`'*'` 到长度为 40 默认 空格
+rjust | 类似center 不过是只左填充
+zfill | 类似center 不过是只左填充, 且填充 `'0'`
+count | 某个字符出现的次数 str.count('a', start, end) `str` 中 `'a'`在start到end之间(不含end)出现的次数
+encode | 译成编码对应的编码字符串 str.encode('UTF-8','strict')
+decode | 译成编码字符串对应的编码 code.decode('UTF-8','strict')
+endswith | 字符是不是结尾 str.endswith(s, start, end) `str`中 `s`在start到end之间是不是结尾  >> True || False
+startswith | 类似 endswith 不过是判断开始
+expandtabs | 把tab缩进替换成空格 默认 8
+find | 查询索引 str.find(s, start, end)  找到返回 索引 未找到返回 -1
+rfind | 类似find 不过是从右开始
+index | 字符包含在内  找到返回 索引 未找到 抛异常
+rindex | 类似index 不过是从右开始
+isalnum | 判断字符串不为空, 且只存在字母或者数字
+isalpha | 判断字符串不为空, 且只存在字母
+isdigit | 判断字符串不为空, 且存在数字
+islower | 判断字符串存在字母, 且都为小写
+isupper | 判断字符串存在字母, 且都为大写
+isnumeric | 判断字符串只存在数字
+isspace | 判断字符串只存在空白
+istitle | 判断字符串每个单词的首字母都是大写
+title | 所有单词都是以大写开始,其余字母均为小写
+join | str.join(list) 将 ``list``` 中的元素 以`str`拼接
+lower | 转成小写
+upper | 转成大写
+swapcase | 大写转小写,小写转大写
+strip | 去掉左右的指定字符 默认空格
+lstrip | 去掉左边的指定字符 默认空格
+rstrip | 去掉右边的指定字符 默认空格
+maketrans | str.maketrans('ab','12') 将`str`中的 `a` 替换成 `1`,`b` 替换成 `2`
+max | max(str) `str`中最大的字母
+min | min(str) `str`中最小的字母
+replace | str.replace('ab', 'AB', 3) 将`str`中 `'ab'` 替换成`'AB'` 最多替换3次
+split | 按指定字符截取字符串 split('s', 1) 以`'s'`截取, 最多截取 1 次
+isdecima | 判断是否只包含十进制字符
+
 ### List 列表
     * 在``` [] ```之间用```,```隔开的元素的序列
-    * 列表的截取
+    * 列表的截取 获得一个新的序列
     ```python
     list[start:end]
     ```
@@ -94,13 +136,26 @@ e | math.e 自然常数
       print(list) # ['我','是','list','!']
       print(list + list1) # ['我','是','list','!','!']
     ```
-    * append()
-    在列表后面添加一个
-    * pop()
-    在列表后面删除一个
+
+函数 | 描述
+- | :-:
+append | 后面添加一个
+pop | 删除索引对应的值 默认 -1
+remove | 删除匹配的第一个元素
+len | 列表的长度
+list | 元组转换为列表
+count | 某元素出现次数
+extend | 将元组追加到列表后面
+index | 查找某个元素的索引
+insert | list.insert(1,'a') 在`list`的第二个元素前插入一个 `'a'`
+reverse | 翻转 列表
+sort | 排序 默认是从小到大 list.sort(key = None, reverse = False) 从大到小 key 可以是是函数
+clear | 清空
+copy | 复制
+
 ### Tuple 元组
     * 在``` () ```之间用```,```隔开的元素的序列(类似于列表, 但元素不能修改)
-    * 元组的截取
+    * 元组的截取 获得一个新的序列
     ```python
     tuple[start:end]
     ```
@@ -110,6 +165,8 @@ e | math.e 自然常数
       tup2 = (20,) # 一个元素，需要在元素后添加逗号
       tuple = ([1],[2]) # 内部的列表不能修改 单列表里面的元素可以修改
     ```
+    * tuple(list)
+    将列表转换为元组
 ### Set 集合
     * 在``` {} ```之间用```,```隔开的无序不重复元素的序列
     * 创建
@@ -118,10 +175,23 @@ e | math.e 自然常数
       set(value)
     ```
     ``` 创建一个空集合必须用 set() 而不是 { }，因为 { } 是用来创建一个空字典 ```
-     * example:
+    * example:
     ```python
       print(set(1,1,1,1)) # {1} 重复的元素被自动去掉
     ```
+    * add()
+      - 添加一项
+    * update(obj or list or tuple,[])
+      - 添加多个
+    * remove(key)
+      - 删除一个 元素不存在会抛异常
+    * discard(key)
+      - 删除一个 元素不存在不会抛异常
+    * pop()
+      - 随机删除
+    * len()
+      - 计算集合元素个数
+      
 ### Dictionary 字典
     * 无序的集合, 通过键来存取的
     * example: 
@@ -141,6 +211,26 @@ e | math.e 自然常数
       ```
     * clear()
       - 清空字典
+    * copy()
+      - 浅复制
+    * fromkeys(list[,val])
+      - list 里面的每一个值映射到 字典中 值为val
+    * get(key,'default')
+      - 查找 字典 key 对应的值  默认返回 `'default'` 不会改变原字典
+    * setdefault(key,'default')
+      - 查找 字典 key 对应的值 返回 不存在就射为 `'default'` 改变原字典
+    * items()
+      - 以列表返回可遍历的(键, 值) 元组数组
+    * keys()
+      - 可遍历的键的列表
+    * values()
+      - 可遍历的值的列表
+    * pop(key)
+      - 删除对应的键值对
+    * popitem()
+      - 通常为删除最后一个键值对
+    * update(dict)
+      - 将dict内的键值 添加到 原字典
     * 字典是一种映射类型，字典用"{ }"标识，它是一个无序的键(key) : 值(value)对集合
     * ``` 键(key)必须使用不可变类型 在同一个字典中，键(key)必须是唯一的 ```
 ## 数据类型转化
@@ -180,6 +270,7 @@ frozenset() | 转化成字典 | frozenset({x: x**2 for x in (2, 4, 6)}) | {2, 4,
   """
 
   ```
+  * **三引号可以定义一个跨行的字符串
 ## 运算符
   * ```+ - * / ** // ```
   * 比较运算符 返回bool值
